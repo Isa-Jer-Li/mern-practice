@@ -1,20 +1,21 @@
 const express = require('express')
 const app = express()
 const port = 8000
-app.use(express.urlencoded({extended: true}))
-app.use(express.json())
-const cors = require('cors')
-app.use(cors())
 
 const {MongoClient} = require('mongodb')
-const url = "mongodb+srv:// . . . "
+const url = "mongodb+srv://IsabelleJ:W8VPmFitofpw1VmX@cluster0.xip7s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 const client = new MongoClient(url)
 
+app.use(express.urlencoded({extended: true}))
+app.use(express.json())
+
+
+
 app.post('/api', (req, res) => {
-	
+
 	const data = req.body
 	data['date'] = new Date()
-	
+
 	async function insertToDb() {
 		try {
 			await client.connect()

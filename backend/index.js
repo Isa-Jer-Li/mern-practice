@@ -9,7 +9,8 @@ const client = new MongoClient(url)
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
-
+const cors = require('cors')
+app.use(cors())
 
 app.post('/api', (req, res) => {
 
